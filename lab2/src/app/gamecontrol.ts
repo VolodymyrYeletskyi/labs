@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef, ComponentFactory, ComponentFactoryResolver, TemplateRef, ComponentRef, ChangeDetectorRef, EventEmitter, ReflectiveInjector,  ElementRef} from '@angular/core';
+import { Component } from '@angular/core';
 import { Even } from './even';
 import { Odd } from './odd';
      
@@ -16,53 +16,27 @@ export class GameControl {
     counter: number = 0;
 	line = "";
 	inter:number;
-	//self:any;
-	//var self = this;
-	//@ViewChild("numberContainer", {read: ViewContainerRef, static:false}) container:ViewContainerRef;
-	//ComponentRef: ComponentRef<any>;
 	
 	
 	
-	StartG(): void {
-		//this.counter = 0;
-		//var _this = this;
-		//this.container.clear();
+	StartG(): void {//start create components
 		this.inter = setInterval(() => { this.counter ++; if (this.counter % 2 != 0)
 		{
-			//const factory: ComponentFactory<Odd> = this.resolver.resolveComponentFactory(Odd);
+			//if number is odd, create Odd component
 			let odd = new Odd();
 			this.line = odd.name;
 		}
 		else
 		{
+			//if number is even, create Even component
 			let even = new Even();
 			this.line = even.name;
-			//const factory: ComponentFactory<Even> = this.resolver.resolveComponentFactory(Even);
 		} }	, 1000);
 		
 	}
-	StopG(): void {
+	StopG(): void {//stop create components
 		clearInterval(this.inter);
 		this.line = "Game over";
 	}
-	
-	/*Func(i:number): void {
-		i = i++;
-		console.log(i);
-		if (i % 2 != 0)
-		{
-			//const factory: ComponentFactory<Odd> = this.resolver.resolveComponentFactory(Odd);
-			let odd = new Odd();
-			this.line = odd.name;
-			console.log(this.line, this.counter);
-		}
-		else
-		{
-			let even = new Even();
-			this.line = even.name;
-			console.log(even.name);
-			//const factory: ComponentFactory<Even> = this.resolver.resolveComponentFactory(Even);
-		}	
-	}*/
 		
 }
