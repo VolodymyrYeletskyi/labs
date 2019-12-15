@@ -12,7 +12,7 @@ export class AppComponent {
     t= "";
 	r = "";
 	
-	isActive(): boolean {
+	isActive(): boolean {//button is active when we have a text in input line, else button is not active
 		if (this.t != "")
 		{
 			return false;
@@ -22,20 +22,18 @@ export class AppComponent {
 			return true;
 		}
 	}
-	Empty(): void {
+	Empty(): void {//empty input line when button is pushed
 		this.r += this.t;
 		this.t = "";
 	}	
-	printText(): String {
-		//this.r = this.t;
+	printText(): String {//print input on paragraph
 		if (this.t == "")
 		{
-			return this.r /*+ '!'*/;
+			return this.r;
 		}
 		else
 		{
-			return this.r + this.t /*+ '?'*/;
+			return this.r + this.t;
 		}
-		//return this.r;
 	}
 }
