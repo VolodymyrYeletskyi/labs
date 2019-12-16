@@ -6,8 +6,8 @@ import { Odd } from './odd';
     selector: 'my-app',
     template: `	
 				<template #numberContainer></template>
-					<button (click) = "StartG()">Start Game</button>
-						<button (click) = "StopG()">Stop Game</button>
+					<button (click) = "StartGame()">Start Game</button>
+						<button (click) = "StopGame()">Stop Game</button>
 							<p>{{line}}</p>
 					
 					`
@@ -17,9 +17,7 @@ export class GameControl {
 	line = "";
 	inter:number;
 	
-	
-	
-	StartG(): void {//start create components
+	StartGame(): void {//start create components
 		this.inter = setInterval(() => { this.counter ++; if (this.counter % 2 != 0)
 		{
 			//if number is odd, create Odd component
@@ -34,7 +32,7 @@ export class GameControl {
 		} }	, 1000);
 		
 	}
-	StopG(): void {//stop create components
+	StopGame(): void {//stop create components
 		clearInterval(this.inter);
 		this.line = "Game over";
 	}
