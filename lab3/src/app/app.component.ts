@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { UserService} from './user.service';
 import { CountService} from './count.service';
+import { ActiveUsers } from './activeUsers';
+import {InactiveUsers } from './inactiveUsers';
 
      
 @Component({
@@ -13,25 +15,30 @@ import { CountService} from './count.service';
 					<p>Active users</p>
 					<table>
 							<tr *ngFor = "let user of activeUsers">
-								<td>{{user[0]}} <button (click) = "changeState(user)">{{buttonName(user)}}</button> </td>
+								<td><active [name] = "user"></active> </td>
 							</tr>
 						</table>
 					<p>Inactive users</p>
 					<table>
 							<tr *ngFor = "let user of inactiveUsers">
-								<td>{{user[0]}} <button (click) = "changeState(user)">{{buttonName(user)}}</button> </td>
+								<td><inactive [name] = "user"></inactive> </td>
 							</tr>
 						</table>
-						<p> Количество перемещений {{userService.getCount()}} </p>`,
-						providers:[UserService, CountService]
+						<p> Количество перемещений {{userService.getCount()}} </p>`
+						
 						
 })
 export class AppComponent { 
-    new_name:String;
+    /*@ViewChild(ActiveUsers, {static:false})
+	@ViewChild(InactiveUsers, {static:false})
+	private active:ActiveUsers;
+	private inactive:InactiveUsers;*/
+	new_name:String;
 	new_state:String;
-	activeUsers:String[][];
-	inactiveUsers:String[][];
-	
+	activeUsers:String[] = [];
+	inactiveUsers:String[] = [];
+
+	 	
 	constructor(private userService: UserService) {}
 	
 	createUser(): void {//создание нового пользователя
@@ -39,22 +46,10 @@ export class AppComponent {
 	}	
 	ngOnInit(){
 		this.activeUsers = this.userService.getActiveUsers();
-		this.inactiveUsers = this.userService.getInactiveUsers();		
+		this.inactiveUsers = this.userService.getInactiveUsers();
+		console.log(this.activeUsers);
 	}
 	
-	buttonName(user:String): String {//смена названия кнопки при перемещении пользователя
-		if (user[1] == "active")
-		{
-			return "Set to inactive";
-		}
-		if (user[1] == "inactive")
-		{
-			return "Set to active";
-		}
-	}
-	
-	changeState(user:String[]): void {
-		this.userService.changeList(user);//смена состояния пользователя
-	}
+
 		
 }
