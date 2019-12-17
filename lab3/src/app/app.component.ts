@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { User } from './user';
 import { UserService} from './user.service';
 import { CountService} from './count.service';
 
@@ -8,19 +7,19 @@ import { CountService} from './count.service';
     selector: 'my-app',
     template: `	
 					<p>Create new user</p>
-						<input type = "text" [(ngModel)] = "new_name" placeholder = "new username />
+						<input type = "text" [(ngModel)] = "new_name" placeholder = "new username" />
 						<input type = "text" [(ngModel)] = "new_state" placeholder = "active or inactive" />
 						<button (click) = "createUser()">Create new user</button> 
 					<p>Active users</p>
 					<table>
 							<tr *ngFor = "let user of activeUsers">
-								<td><user [name] = "user[0]" [state] = "user[1]"></user> <button (click) = "changeState(user)">{{buttonName(user)}}</button> </td>
+								<td>{{user[0]}} <button (click) = "changeState(user)">{{buttonName(user)}}</button> </td>
 							</tr>
 						</table>
 					<p>Inactive users</p>
 					<table>
 							<tr *ngFor = "let user of inactiveUsers">
-								<td><user [name] = "user[0]" [state] = "user[1]"></user> <button (click) = "changeState(user)">{{buttonName(user)}}</button> </td>
+								<td>{{user[0]}} <button (click) = "changeState(user)">{{buttonName(user)}}</button> </td>
 							</tr>
 						</table>
 						<p> Количество перемещений {{userService.getCount()}} </p>`,
