@@ -3,6 +3,7 @@ export class CountService{//сервис для подсчета количес�
 	
 	incrementCount(): void {
 		this.count++;
+		console.log(this.count);
 	}
 	getCount(): number {
 		return this.count;
