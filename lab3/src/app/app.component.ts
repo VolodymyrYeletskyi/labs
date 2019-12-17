@@ -29,10 +29,6 @@ import {InactiveUsers } from './inactiveUsers';
 						
 })
 export class AppComponent { 
-    /*@ViewChild(ActiveUsers, {static:false})
-	@ViewChild(InactiveUsers, {static:false})
-	private active:ActiveUsers;
-	private inactive:InactiveUsers;*/
 	new_name:String;
 	new_state:String;
 	activeUsers:String[] = [];
