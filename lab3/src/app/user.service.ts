@@ -3,7 +3,7 @@ import {CountService} from './count.service';
 
 @Injectable()
 export class UserService{//сервис для работы с пользователями
-	private activeUsers:String[] = ["Vasya", "Petya"];//каждый пользователь представляет собой имя и состояние:active/inactive
+	private activeUsers:String[] = ["Vasya", "Petya"];//активны и неактивные пользователи
 	private inactiveUsers:String[] = ["Vova", "Semen"];
 	
 	constructor (private countService: CountService) {}
@@ -38,7 +38,7 @@ export class UserService{//сервис для работы с пользова�
 			this.activeUsers[this.activeUsers.lastIndexOf(name)] = this.activeUsers[this.activeUsers.length - 1];
 			this.activeUsers[this.activeUsers.length - 1] = name;
 			this.activeUsers.pop();
-			//console.log(this.activeUsers);
+			
 			this.countService.incrementCount();//увеличение счетчика перемещений
 			return;
 		}
@@ -50,7 +50,7 @@ export class UserService{//сервис для работы с пользова�
 			this.inactiveUsers[this.inactiveUsers.lastIndexOf(name)] = this.inactiveUsers[this.inactiveUsers.length - 1];
 			this.inactiveUsers[this.inactiveUsers.length - 1] = name;
 			this.inactiveUsers.pop();
-			//console.log(this.inactiveUsers);
+			
 			this.countService.incrementCount();//увеличение счетчика перемещений
 
 			return;
