@@ -9,11 +9,13 @@ export class BookService{//сервис для работы с книгами
 	
 	addBook(book:String[]): void {//добавление новой книги
 		this.books.push(book);
-		console.log(this.books);
 	}
 	deleteBook(book:String[]): void {//удаление книги
-		this.books[this.books.lastIndexOf(book)] = this.books[this.books.length - 1];
-		this.books[this.books.length - 1] = book;
-		this.books.pop();
+		if (this.books.lastIndexOf(book) >= 0)
+		{
+			this.books[this.books.lastIndexOf(book)] = this.books[this.books.length - 1];
+			this.books[this.books.length - 1] = book;
+			this.books.pop();
+		}
 	}
 }
